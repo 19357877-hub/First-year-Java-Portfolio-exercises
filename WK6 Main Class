@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner kb = new Scanner(System.in);
+    String name, NINumber, employerName;
+    double payment;
+    System.out.print("Enter employee name: ");
+    name = kb.nextLine();
+    System.out.print("Enter employee NI Number: ");
+    NINumber = kb.nextLine();
+    NIRecord user = new NIRecord(name, NINumber);
+
+    System.out.print("Enter employer name (or Q to finish entering employment details): ");
+    employerName = kb.nextLine();
+    while (employerName.equals("Q") == false){
+      System.out.print("Enter payment: ");
+      payment = kb.nextDouble();
+      kb.nextLine();
+      user.addEmployment(new Employment(employerName,payment));
+      System.out.print("Enter employer name (or Q to finish entering employment details): ");
+      employerName = kb.nextLine();
+    }
+    System.out.println("NI due: " + user.getTotalNI());
+    if (user.meetsCriteria()) {
+      System.out.println("Employee has got their stamps");
+    }
+    System.out.println("Goodbye");
+  }
+}
