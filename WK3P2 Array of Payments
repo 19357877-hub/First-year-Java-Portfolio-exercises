@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Payment[] payments = makePaymentArray();
+
+        String finished = "N";
+        while (!finished.equals("Y")) {
+            System.out.print("Enter a payment reference: ");
+            String paymentRef = scanner.nextLine().trim();
+            Payment payment = findPayment(paymentRef,payments);
+            if  (payment != null) {
+                printPayment(payment);
+            }
+            else {
+                System.out.println("Payment not found");
+            }
+            System.out.print("Finished [Y/N]? ");
+            finished = scanner.nextLine();
+        }
+    }
+
+    public static Payment findPayment(String paymentRef, Payment[] payments) {
+      int arrayLength = payments.length;
+      for (int i=0; i<arrayLength; i++){
+        if (payments[i].paymentRef == paymentRef){
+          return payments[i];
+        }
+      }
+      return null;
+    }
+
+    public static void printPayment(Payment payment) {
+        System.out.println("Payment Ref: " + payment.getPaymentRef());
+        System.out.println("Payee: " + payment.getPayee());
+        System.out.println("Hours Worked: " + payment.getHoursWorked());
+        System.out.println("Pay Rate: " + payment.getPayRate());
+        System.out.println("Total Pay: " + payment.getTotalPay());
+    }
+
+    public static Payment[] makePaymentArray() {
+        Payment[] payments = new Payment[3];
+        payments[0] = new Payment("PS7","Sarah",12.5);
+        payments[0].setHoursWorked(4.5);
+        payments[1] = new Payment("PS5","Sarah",24);
+        payments[1].setHoursWorked(7);
+        payments[2] = new Payment("PJ5","Joe",14.5);
+        payments[2].setHoursWorked(6.5);
+        return payments;
+    }
+}
