@@ -1,0 +1,21 @@
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    Scanner kb = new Scanner(System.in);
+    double width;
+    double height;
+    double length;
+    System.out.print("Enter the width of the parcel: ");
+    width = kb.nextDouble();
+    System.out.print("Enter the height of the parcel: ");
+    height = kb.nextDouble();
+    System.out.print("Enter the length of the parcel: ");
+    length = kb.nextDouble();
+    if (((width+height+length)<=90) && (width <= 60 && height <= 60 && length <= 60)){
+      System.out.println("parcel can be sent");
+    }
+    else{
+      System.out.println("parcel cannot be sent");
+    }
+  }
+}
