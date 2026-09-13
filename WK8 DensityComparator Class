@@ -1,0 +1,17 @@
+public class DensityComparator implements IComparator {
+  public DensityComparator(){
+  }
+
+  public int compare(ITown town1, ITown town2){
+    if (town1.getPopulation()/town1.getArea() > town2.getPopulation()/town2.getArea()){
+      return 1;
+    }
+    else if (town1.getPopulation()/town1.getArea() < town2.getPopulation()/town2.getArea()){
+      return -1;
+    }
+    else{
+      return 0;
+    }
+  }
+  
+}
