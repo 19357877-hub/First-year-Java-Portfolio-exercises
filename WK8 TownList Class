@@ -1,0 +1,78 @@
+import java.util.ArrayList;
+
+public class TownList implements ITownList, IRankable {
+  public ArrayList<ITown> towns;
+
+  public TownList(){
+    towns = new ArrayList<>();
+  }
+
+  public void addTown(ITown ITown){
+    towns.add(ITown);
+  }
+
+  public int getSize(){
+    return towns.size();
+  }
+
+  public ITown getTown(int index){
+    return towns.get(index);
+  }
+
+  public double getTotalArea(){
+    double totalArea = 0;
+    for (ITown town: towns){
+      totalArea += town.getArea();
+    }
+    return totalArea;
+  }
+
+  public int getTotalPopulation(){
+    int totalPopulation = 0;
+    for (ITown town: towns){
+      totalPopulation += town.getPopulation();
+    }
+    return totalPopulation;
+  }
+
+  public ITown getHighest(IComparator comparator){
+    if (towns.size() == 1){
+      return towns.get(0);
+    }
+    else if (towns.size() == 0){
+      return null;
+    }
+    else{
+      ITown savedTown = towns.get(0);
+
+      for (int i=1; i<towns.size(); i++){
+        if ((comparator.compare(towns.get(i), savedTown)) == 1){
+          savedTown = towns.get(i);
+        }
+      }
+
+      return savedTown;
+    }
+  }
+
+  public ITown getLowest(IComparator comparator){
+    if (towns.size() == 1){
+      return towns.get(0);
+    }
+    else if (towns.size() == 0){
+      return null;
+    }
+    else{
+
+      ITown savedTown = towns.get(0);
+
+      for (int i=1; i<towns.size(); i++){
+        if (comparator.compare(towns.get(i), savedTown) == -1){
+          savedTown = towns.get(i);
+        }
+      }
+
+      return savedTown;
+    }
+  }
+}
