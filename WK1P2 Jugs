@@ -1,0 +1,37 @@
+public class Main {
+  public static void main(String[] args) {
+    int cap_a=5,cap_b=3,vol_a=0,vol_b=0,target=4,transfer;
+    
+    while ((vol_a != target) && (vol_a+vol_b != target)){
+      if (vol_a == 0){
+        vol_a = cap_a;
+        System.out.println("Fill jug A with " + vol_a + " litres");
+      }
+      else if (vol_b == cap_b){
+        vol_b = 0;
+        System.out.println("Empty jug B");
+      }
+      else{
+        if (vol_a < cap_b-vol_b){
+          transfer = vol_a;
+        }
+        else{
+          transfer = cap_b-vol_b;
+        }
+        vol_a -= transfer;
+        vol_b += transfer;
+        System.out.println("Transfer " + transfer + " litres from jug A to jug B");       
+      }
+      System.out.println("There are now " + vol_a + " litres in jug A and " +  vol_b + " litres in jug B");
+    }
+    if (vol_a == target){
+      System.out.println("Jug A contains the desired quantity of water");
+    }
+    else{
+      System.out.println("Transfer" + vol_b + " to jug A");
+      vol_a += vol_b;
+      vol_b = 0;
+      System.out.println("Jug A contains the desired quantity of water" + vol_a);
+    }
+  }
+}
