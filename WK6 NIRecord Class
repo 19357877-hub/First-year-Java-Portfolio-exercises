@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+
+public class NIRecord {
+
+    private static final double LOWER_EARNINGS_LIMIT = 533;
+    private static final double PRIMARY_THRESHOLD = 1048;
+    private static final double UPPER_EARNINGS_LIMIT = 4189;
+
+    private String name;
+    private String niNumber;
+    private ArrayList<Employment> employments = new ArrayList<>();
+
+    public NIRecord(String name, String niNumber) {
+        this.name = name;
+        this.niNumber = niNumber;
+    }
+
+    public void addEmployment(Employment employ) {
+        employments.add(employ);
+    }
+
+    public int getNumEmployments() {
+        return employments.size();
+    }
+
+    public Employment getEmployment(int pos) {
+        if (pos>=0 && pos<employments.size()){
+          return employments.get(pos);
+        }
+        return null;
+    }
+
+    public boolean meetsCriteria() {
+        for (int i=0; i<employments.size(); i++){
+          if (employments.get(i).getPayment() >= LOWER_EARNINGS_LIMIT){
+            return true;
+          }
+        }
+        return false;
+    }
+
+    public double getTotalNI() {
+      double totalNI = 0;
+      for (int i=0; i<employments.size(); i++){
+        double pay = employments.get(i).getPayment();
+        double difference = 0;
+        if (pay > UPPER_EARNINGS_LIMIT){
+          difference = pay - UPPER_EARNINGS_LIMIT;
+          totalNI += difference*0.02;
+          pay -= difference;
+        }
+        if (pay > PRIMARY_THRESHOLD){
+          difference = pay - PRIMARY_THRESHOLD;
+          totalNI += difference*0.08;
+        }
+      }
+      return totalNI;
+    }
+}
