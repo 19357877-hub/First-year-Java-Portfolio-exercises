@@ -1,0 +1,33 @@
+public class Payment {
+  public String paymentRef;
+  public String payee;
+  public double payRate;
+  public double hoursWorked;
+
+  public Payment(String paymentRef, String payee, double payRate){
+    this.paymentRef = paymentRef;
+    this.payee = payee;
+    this.payRate = payRate;
+    this.hoursWorked = 0;
+  }
+
+  public void setHoursWorked(double hoursWorked){
+    this.hoursWorked = hoursWorked;
+  }
+
+  public String getPaymentRef(){
+    return this.paymentRef;
+  }
+  public String getPayee(){
+    return this.payee;
+  }
+  public double getPayRate(){
+    return this.payRate;
+  }
+  public double getHoursWorked(){
+    return this.hoursWorked;
+  }
+  public double getTotalPay(){
+    return (this.hoursWorked*this.payRate);
+  }
+}
