@@ -1,0 +1,37 @@
+public class KDiamond extends KShape{
+
+  private double width;
+  private double height;
+
+  public KDiamond(double xCen, double yCen, double width,  
+                     double height) {
+    super(xCen,yCen);
+    this.width = width;
+    this.height = height;
+  }
+
+  public double getWidth() {
+    return width;
+  }
+
+  public double getHeight() {
+    return height;
+  }
+
+  public double getPerimeter() {
+    return (2*(Math.sqrt((width*width)+(height*height))));
+  }
+
+  public double getArea() {
+    return width*height/2.0;
+  }
+
+  public boolean isInside(double x,double y){
+    if ((2*Math.abs(x-getXCen()) < width)){
+      if (2*Math.abs(y-getYCen()) < (height*(1-(2*(Math.abs(x-getXCen())/width))))){
+        return true;
+      }
+    }
+    return false;
+  }
+}

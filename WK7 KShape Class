@@ -1,0 +1,61 @@
+/**
+ * Class representing shapes. Designed to be extended by classes representing specific shapes.
+ */
+public class KShape {
+  
+  private double xCen;
+  private double yCen;
+
+  /**
+  * Constructor
+  * @param xCen x coordinate of centre of shape
+  * @param yCen y coordinate of centre of shape
+  */
+  public KShape(double xCen, double yCen) {
+    this.xCen = xCen;
+    this.yCen = yCen;
+  }
+
+  /**
+  * Get x centre point
+  * @return x coordinate of centre of shape
+  */
+  public double getXCen() {
+    return xCen; 
+  }
+
+  /**
+  * Get y centre point
+  * @return y coordinate of centre of shape
+  */    
+  public double getYCen() {
+    return yCen;     
+  }
+
+  /**
+  * Get area
+  * @return area of shape
+  */    
+  public double getArea() {
+    return 0; 
+  }
+
+  /**
+  * Get length of perimeter
+  * @return length of perimeter of shape
+  */
+  public double getPerimeter() {
+    return 0; 
+  }
+
+  /**
+  * Determines whether a point is inside the shape.
+  * Points lying on the boundary of the shape are considered to be outside it.
+  * @param x x coordinate of point
+  * @param y y coordinate of point
+  * @return true if (x,y) is inside the shape, otherwise false.
+  */
+  public boolean isInside(double x, double y) {
+    return false;
+  }
+}
