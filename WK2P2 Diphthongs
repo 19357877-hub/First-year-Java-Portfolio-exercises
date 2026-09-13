@@ -1,0 +1,22 @@
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    Scanner kb = new Scanner(System.in);
+    String input;
+    int diphthongs = 0;
+    input = kb.nextLine();
+    String stripped = input.strip();
+    stripped = input.toLowerCase();
+    int length = stripped.length();
+    for (int count = 1; count<length; count++){
+      char character = stripped.charAt(count);
+      if ((character=='a')||(character=='e')||(character=='i')||(character=='o')||(character=='u')){
+        char character2 = stripped.charAt(count-1);
+        if ((character2=='a')||(character2=='e')||(character2=='i')||(character2=='o')||(character2=='u')){
+          diphthongs += 1;
+        }
+      }
+    }
+    System.out.println(diphthongs);
+  }
+}
